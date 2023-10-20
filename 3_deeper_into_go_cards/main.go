@@ -1,13 +1,13 @@
 package main
 
-import "fmt"
-
+// go run main.go deck.go
+// to run the program with all the package's files
 func main() {
-	// var card string = "Ace of spades"
-	card := newCard()
-	// card = "Five of spades "
+	cards := deck{"Ace of diamonds", newCard()}
+	cards = append(cards, "Six of spades")
 
-	fmt.Println(card)
+	cards.print()
+	// fmt.Println(cards)
 }
 
 func newCard() string {
