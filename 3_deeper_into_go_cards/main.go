@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // go run main.go deck.go
 // to run the program with all the package's files
 func main() {
@@ -12,9 +10,14 @@ func main() {
 	// hand.print()
 	// remainingCards.print()
 
-	cards := newDeck()
-	// cards.toString()
-	fmt.Println(cards.toString())
+	// cards := newDeck()
+	// // cards.toString()
+	// fmt.Println(cards.toString())
 
-	cards.saveToFile("my_cards")
+	// cards.saveToFile("my_cards")
+
+	cards := newDeckFromFile("my")
+
+	cards.print()
+
 }
