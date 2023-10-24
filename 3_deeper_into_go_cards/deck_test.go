@@ -4,7 +4,10 @@
 
 package main
 
-import "testing"
+import (
+	"os"
+	"testing"
+)
 
 // when thinking about test, think 'what ares some easy assertions' or 'what do I care about with the code that I'm writing'
 
@@ -23,4 +26,18 @@ func TestNewDeck(t *testing.T) {
 	if d[len(d)-1] != "Four of Clubs" {
 		t.Errorf("Expected last card to be 'Four of Clubs', but got: %v", d[len(d)-1])
 	}
+}
+
+func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
+	os.Remove("_decktesting")
+	deck := newDeck()
+
+	deck.saveToFile("_decktesting")
+
+	loadedDeck := newDeckFromFile("_decktesting")
+	if len(loadedDeck) != 16 {
+		t.Errorf("Expected 16 cards in deck but got %v", len(deck))
+	}
+
+	os.Remove("_decktesting")
 }
