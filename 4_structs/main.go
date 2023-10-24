@@ -23,8 +23,10 @@ func main() {
 		},
 	}
 
+	jimPointer := &jim //> the & operator gives us the memory address of the value this variable is pointing at
+	fmt.Println(jimPointer)
 	jim.print()
-	jim.updateName("Jimmy")
+	jimPointer.updateName("Jimmy")
 	jim.print()
 
 }
@@ -33,6 +35,8 @@ func (p person) print() {
 	fmt.Printf("%+v\n", p)
 }
 
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+// *person would be read as 'a pointer that points at a person'
+func (pointerToPerson *person) updateName(newFirstName string) {
+	//> the * operator gives us the value this memory address is pointing at
+	(*pointerToPerson).firstName = newFirstName
 }
