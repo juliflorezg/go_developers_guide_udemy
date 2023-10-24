@@ -41,3 +41,7 @@ func (pointerToPerson *person) updateName(newFirstName string) {
 	//> the * operator gives us the value this memory address is pointing at
 	(*pointerToPerson).firstName = newFirstName
 }
+
+//> in Go this types are pass by value, so we have to use pointers to change the actual value in a function: int, float, string, bool, structs
+
+//> these other types are pass by reference so we don't have to worry with pointers to change these values: slices, maps, channels, pointers, functions
