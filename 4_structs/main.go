@@ -23,10 +23,11 @@ func main() {
 		},
 	}
 
-	jimPointer := &jim //> the & operator gives us the memory address of the value this variable is pointing at
-	fmt.Println(jimPointer)
+	// jimPointer := &jim //> the & operator gives us the memory address of the value this variable is pointing at
+	// fmt.Println(jimPointer)
 	jim.print()
-	jimPointer.updateName("Jimmy")
+	//? in go we can call a pointer receiver with just a variable of that type, it is not necessary to first create a pointer and then call the function from that pointer, go will do that for us
+	jim.updateName("Jimmy")
 	jim.print()
 
 }
