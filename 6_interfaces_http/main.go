@@ -16,6 +16,9 @@ func main() {
 
 	}
 
-	fmt.Println(resp)
-	fmt.Printf("%+v", resp)
+	// byte slice
+	bs := make([]byte, 99999)
+	resp.Body.Read(bs)
+	fmt.Println(string(bs))
+
 }
