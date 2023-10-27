@@ -33,9 +33,10 @@ func main() {
 	*/
 	// and is saying that is going to wait for a value to come out of the channel and assign it to the 'l' variable, and then pass it to the checkLink function
 	for l := range c {
-    //! this line of code right here will make the main routine pause for 5 seconds but it will be blocked, so it cannot receive any other messages from channels while in sleep, so it's not the appropriate place to put the sleep
-		time.Sleep(5 * time.Second)
-		go checkLink(l, c)
+		go func(link string, c chan string) {
+			time.Sleep(5 * time.Second)
+			checkLink(link, c)
+		}(l, c)
 	}
 }
 
