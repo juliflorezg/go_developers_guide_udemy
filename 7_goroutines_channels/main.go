@@ -20,7 +20,13 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	fmt.Println(<-c) 
+	// receiving messages from a channel is blocking, the main routine waits for this messages and THEN continues its execution
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
 }
 
 func checkLink(link string, c chan string) {
