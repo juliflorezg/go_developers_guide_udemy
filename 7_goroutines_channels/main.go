@@ -23,8 +23,16 @@ func main() {
 	// receiving messages from a channel is blocking, the main routine waits for this messages and THEN continues its execution
 
 	//* now, we want to check constantly for the website status, so as long as this program is running it will spawn goroutines to check all sites status
-	for {
-		go checkLink(<-c, c)
+
+	// this syntax is equivalent to
+	/*
+		    for {
+				go checkLink(<-, c)
+			}
+	*/
+	// and is saying that is going to wait for a value to come out of the channel and assign it to the 'l' variable, and then pass it to the checkLink function
+	for l := range c {
+		go checkLink(l, c)
 	}
 }
 
