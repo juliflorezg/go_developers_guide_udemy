@@ -21,12 +21,9 @@ func main() {
 	}
 
 	// receiving messages from a channel is blocking, the main routine waits for this messages and THEN continues its execution
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
+	for i := 0; i < len(links); i++ {
+    fmt.Println(<-c)
+  }
 }
 
 func checkLink(link string, c chan string) {
