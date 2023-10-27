@@ -21,9 +21,11 @@ func main() {
 	}
 
 	// receiving messages from a channel is blocking, the main routine waits for this messages and THEN continues its execution
-	for i := 0; i < len(links); i++ {
-    fmt.Println(<-c)
-  }
+
+	//* now, we want to check constantly for the website status, so as long as this program is running it will spawn goroutines to check all sites status
+	for {
+		go checkLink(<-c, c)
+	}
 }
 
 func checkLink(link string, c chan string) {
@@ -32,11 +34,11 @@ func checkLink(link string, c chan string) {
 	if err != nil {
 		fmt.Println(link, "might be down!")
 
-		c <- "Might be down I think"
+		c <- link
 		return
 	}
 
 	fmt.Println(link, "is up!")
-	c <- "Yep is up"
+	c <- link
 
 }
